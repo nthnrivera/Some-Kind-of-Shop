@@ -1,10 +1,9 @@
 package com.revature.Shop;
 
+import com.revature.Application.ShopUI;
 import com.revature.Database.Database;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ShopCartRemoveItem {
 
@@ -16,11 +15,13 @@ public class ShopCartRemoveItem {
 
             Connection con = Database.getConnection();
 
-            String query = "DELETE FROM cart WHERE cartID = " + "'" + id + "'";
+            String query = "DELETE FROM cart WHERE cartID = ?";
 
-            Statement statement = con.createStatement();
+            PreparedStatement statement = con.prepareStatement(query);
 
-            statement.executeQuery(query);
+            statement.setInt(1,id);
+
+            statement.execute();
         }
         catch (SQLException e)
         {
@@ -36,5 +37,7 @@ public class ShopCartRemoveItem {
             System.out.println(e);
         }
 
+        ShopDisplayCart displayCart = new ShopDisplayCart();
+        displayCart.displayCart();
     }
 }

@@ -30,8 +30,8 @@ public class ShopAddCart {
             statement.execute();
             System.out.println("Product Added to Cart");
 
-            ShopUI shopUI = new ShopUI();
-            shopUI.shopUI();
+            ShopDisplayInventory displayInventory = new ShopDisplayInventory();
+            displayInventory.displayInventory();
         }
         catch(SQLException e)
         {

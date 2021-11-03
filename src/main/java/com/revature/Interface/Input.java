@@ -4,6 +4,7 @@ import com.revature.Account.Login;
 import com.revature.Account.Register;
 import com.revature.Application.MainMenuUI;
 import com.revature.Application.ShopUI;
+import com.revature.Shop.ShopAddInventory;
 import com.revature.Shop.ShopBuyItem;
 import com.revature.Shop.ShopDisplayCart;
 import com.revature.Shop.ShopDisplayInventory;
@@ -69,6 +70,10 @@ public class Input {
                 ShopDisplayCart displayCart = new ShopDisplayCart();
                 displayCart.displayCart();
                 break;
+            case 3:
+                ShopUI shop = new ShopUI();
+                shop.shopAddItem();
+                break;
         }
     }
 
@@ -97,4 +102,5 @@ public class Input {
                 break;
         }
     }
+
 }

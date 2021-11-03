@@ -38,12 +38,15 @@ public class ShopDisplayCart {
             }
             else
             {
+
                 do {
                     int cartID = resultSet.getInt("cartID");
                     String userName = resultSet.getString("userName");
                     String productName = resultSet.getString("productName");
                     double productPrice = resultSet.getDouble("productPrice");
                     double productBidPrice = resultSet.getDouble("productBidPrice");
+
+                    list.add(new Cart(cartID,userName,productName,productPrice,productBidPrice));
                 } while (resultSet.next());
             }
 
@@ -51,7 +54,7 @@ public class ShopDisplayCart {
             {
                 System.out.println("ITEM ");
                 System.out.println("Entry ID: " + list.get(i).getProductID());
-                System.out.println("Name " + list.get(i).getProductName());
+                System.out.println("Name: " + list.get(i).getProductName());
                 System.out.println("Price: " + list.get(i).getProductPrice());
                 System.out.println("Your Bid: " + list.get(i).getProductBidPrice());
                 System.out.println("");

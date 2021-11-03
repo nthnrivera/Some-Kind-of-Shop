@@ -34,9 +34,10 @@ public class MainMenuUI {
                     "2- Register");
         } else
         {
+
             System.out.println("3- Shop \n" +
                     "4- Payments \n" +
-                    "5- Pending Payments \n" +
+                    "5- Pending Bids \n" +
                     "6- Log Out");
         }
 
