@@ -4,8 +4,9 @@ import com.revature.Account.Login;
 import com.revature.Account.Register;
 import com.revature.Application.MainMenuUI;
 import com.revature.Application.ShopUI;
-import com.revature.Shop.ShopAddInventory;
-import com.revature.Shop.ShopBuyItem;
+import com.revature.Bids.AcceptPendingBids;
+import com.revature.Bids.CancelPendingBids;
+import com.revature.Bids.DisplayPendingBids;
 import com.revature.Shop.ShopDisplayCart;
 import com.revature.Shop.ShopDisplayInventory;
 
@@ -40,11 +41,12 @@ public class Input {
 
                     shop.shopUI();
                     break;
-                case 4:
+                case 4: //completed orders
 
                     break;
-                case 5:
-
+                case 5: // pending bids
+                    DisplayPendingBids displayBids = new DisplayPendingBids();
+                    displayBids.displayBids();
                     break;
                 case 6:
                     System.out.println("Logging Out");
@@ -74,6 +76,12 @@ public class Input {
                 ShopUI shop = new ShopUI();
                 shop.shopAddItem();
                 break;
+            case 4:
+                break;
+            case 5:
+                MainMenuUI mainMenu = new MainMenuUI();
+                mainMenu.Display();
+                break;
         }
     }
 
@@ -102,5 +110,24 @@ public class Input {
                 break;
         }
     }
+
+    public void pendingBids(int input)
+    {
+        switch (input){
+            case 1: //accept bid
+                AcceptPendingBids acceptBid = new AcceptPendingBids();
+                acceptBid.acceptBid();
+                break;
+            case 2: //cancel bid
+                CancelPendingBids cancelBid = new CancelPendingBids();
+                cancelBid.cancelBid();
+                break;
+            case 3: //exit
+                MainMenuUI mainMenu = new MainMenuUI();
+                mainMenu.Display();
+                break;
+        }
+    }
+
 
 }

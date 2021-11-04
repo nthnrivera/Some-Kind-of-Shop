@@ -1,8 +1,9 @@
-package com.revature.Shop;
+package com.revature.Bids;
 
 import com.revature.Application.MainMenuUI;
-import com.revature.Application.ShopUI;
+import com.revature.Application.PendingBidsUI;
 import com.revature.Database.Database;
+import com.revature.Shop.Cart;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,10 +12,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopDisplayCart {
+public class DisplayPendingBids {
     List<Cart> list = new ArrayList<Cart>();
-
-    public void displayCart()
+    public void displayBids()
     {
         try
         {
@@ -26,7 +26,7 @@ public class ShopDisplayCart {
 
             String name = mainMenuUI.getUserName();
 
-            String query = "SELECT * FROM pendingOrders WHERE userName =" + "'" + name + "'";
+            String query = "SELECT * FROM pendingOrders";
 
             Statement statement = con.createStatement();
 
@@ -34,13 +34,13 @@ public class ShopDisplayCart {
 
             if (resultSet.next() == false)
             {
-                System.out.println("CART EMPTY");
+                System.out.println("NO BIDS");
             }
             else
             {
 
                 do {
-                    int cartID = resultSet.getInt("cartID");
+                    int cartID = resultSet.getInt("orderID");
                     String userName = resultSet.getString("userName");
                     String productName = resultSet.getString("productName");
                     double productPrice = resultSet.getDouble("productPrice");
@@ -54,18 +54,20 @@ public class ShopDisplayCart {
             {
                 System.out.println("ITEM ");
                 System.out.println("Entry ID: " + list.get(i).getProductID());
+                System.out.println("USER: " + list.get(i).getUserName());
                 System.out.println("Name: " + list.get(i).getProductName());
                 System.out.println("Price: " + list.get(i).getProductPrice());
-                System.out.println("Your Bid: " + list.get(i).getProductBidPrice());
+                System.out.println("User Bid: " + list.get(i).getProductBidPrice());
                 System.out.println("");
             }
 
-            ShopUI shop = new ShopUI();
-            shop.shopCart();
+
+            PendingBidsUI pendingBidsUI = new PendingBidsUI();
+            pendingBidsUI.bidsUI();
         }
         catch (SQLException e)
         {
-            System.out.println("CART EMPTY");
+            e.printStackTrace();
         }
         catch (ClassNotFoundException e)
         {
@@ -74,10 +76,6 @@ public class ShopDisplayCart {
         catch (Exception e)
         {
             System.out.println(e);
-        }
-        finally {
-            ShopUI shop = new ShopUI();
-            shop.shopCart();
         }
     }
 }

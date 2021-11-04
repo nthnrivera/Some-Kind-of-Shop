@@ -17,7 +17,7 @@ public class ShopAddCart {
 
             Connection con = Database.getConnection();
 
-            String query = "INSERT INTO cart(userName, productName, productPrice, productBidPrice)" +
+            String query = "INSERT INTO pendingOrders(userName, productName, productPrice, productBidPrice)" +
                     "VALUES(?,?,?,?)";
 
             PreparedStatement statement = con.prepareStatement(query);

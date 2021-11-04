@@ -56,6 +56,10 @@ public class Register {
 
                 System.out.println("User Registered");
             }
+            else
+            {
+                throw new Exception("INVALID USER TYPE");
+            }
         }catch (SQLException e)
         {
             System.out.println("SQLException");

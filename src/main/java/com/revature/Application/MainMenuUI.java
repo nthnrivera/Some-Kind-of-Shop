@@ -34,11 +34,18 @@ public class MainMenuUI {
                     "2- Register");
         } else
         {
-
-            System.out.println("3- Shop \n" +
-                    "4- Payments \n" +
-                    "5- Pending Bids \n" +
-                    "6- Log Out");
+            if (userType == type.employee || userType == type.manager) {
+                System.out.println("3- Shop \n" +
+                        "4- Completed Orders \n" +
+                        "5- Pending Bids \n" +
+                        "6- Log Out");
+            }
+            else
+            {
+                System.out.println("3- Shop \n" +
+                        "4- Payments \n" +
+                        "6- Log Out");
+            }
         }
 
         Scanner scan = new Scanner(System.in);
